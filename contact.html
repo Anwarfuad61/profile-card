@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./contact.css" rel="stylesheet">
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <title>Contact Form</title>
+</head>
+<style>
+    body {
+        width: 100vw;
+  display: grid;
+  place-items: center;
+    }
+</style>
+<body>
+
+    
+      <div id="contact" class="formBtn">Contact</div>
+      <div class="contactForm">
+        <h1 style="margin-bottom: 10px;">Keep in touch</h1>
+        <form id="contact-form" action="mailto:anwarfuad123456789@gmail.com" method="POST" enctype="text/plain">
+    
+          <input type="text" id="fname" name="firstname" placeholder="Your name.." required />
+
+          <input type="text" id="lname" name="lastname" placeholder="Your last name.." required />
+
+          <input type="text" id="email" name="email" placeholder="Your Email ID.." required />
+
+          <textarea id="message" name="message" placeholder="Your Message.." style="height:200px"></textarea>
+      
+          <button class="formBtn" type="submit" id="submit-form">Submit</button>
+      
+        </form>
+      </div>
+        <a id="contact" class="formBtn" href="./index.html">Home</a>
+    </div>
+</body>
+<script type="text/javascript">
+    var $form = $('form#contact-form'),
+    url = 'https://formspree.io/f/xyyqavvo'
+
+$('#submit-form').on('click', function(e) {
+  e.preventDefault();
+  var jqxhr = $.ajax({
+    url: url,
+    method: "GET",
+    dataType: "json",
+    data: $form.serializeObject()
+  }).success(
+    // do something
+  );
+})
+  </script>
+</html>
